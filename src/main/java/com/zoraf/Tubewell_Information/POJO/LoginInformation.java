@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 public class LoginInformation implements Serializable {
 
-    @SerializedName("userEmail")
+    @SerializedName("email")
     private String email;
 
     @SerializedName("password")

@@ -1,17 +1,24 @@
 package com.zoraf.Tubewell_Information.POJO;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class UserInformation implements Serializable {
 
+    @SerializedName("userName")
     private String userName;
 
+    @SerializedName("organizationName")
     private String organizationName;
 
+    @SerializedName("mobileNumber")
     private String mobileNumber;
 
+    @SerializedName("email")
     private String email;
 
+    @SerializedName("password")
     private String password;
 
     public UserInformation() {
