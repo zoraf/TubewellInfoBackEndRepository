@@ -22,7 +22,7 @@ public class RegistrationController {
     public ApiResponse registration(@RequestBody UserInformation userInformation) {
 
         UserModel userModel = userRepository.findAllByEmail(userInformation.getEmail());
-
+        ApiResponse apiResponse = new ApiResponse();
         if (userModel == null) {
             userModel = new UserModel();
             userModel.setUserName(userInformation.getUserName());
@@ -31,16 +31,13 @@ public class RegistrationController {
             userModel.setEmail(userInformation.getEmail());
             userModel.setPassword(userInformation.getPassword());
             userRepository.save(userModel);
-            ApiResponse apiResponse = new ApiResponse();
-            apiResponse.setResponse(Constant.REGISTRATION_DONE_SUCCESSFULLY);
-            apiResponse.setResponseCode(Constant.REQUEST_SUCCESSFUL);
+            apiResponse.setResponse(Constant.MSG_REGISTRATION_DONE_SUCCESSFULLY);
+            apiResponse.setResponseCode(Constant.REGISTRATION_DONE_SUCCESSFULLY);
             return apiResponse;
         }
         else  {
-
-            ApiResponse apiResponse = new ApiResponse();
-            apiResponse.setResponse(Constant.REGISTRATION_DONE_PREVIOUSLY);
-            apiResponse.setResponseCode(Constant.REGISTRATION_DONE);
+            apiResponse.setResponse(Constant.MSG_REGISTRATION_DONE_PREVIOUSLY);
+            apiResponse.setResponseCode(Constant.REGISTRATION_DONE_PREVIOUSLY);
             return apiResponse;
         }
     }

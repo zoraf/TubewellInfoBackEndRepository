@@ -28,21 +28,21 @@ public class LoginController {
         System.out.println("email:: " + email + "password:: " + password);
         ApiResponse apiResponse = new ApiResponse();
         if (userModel == null) {
-            apiResponse.setResponse(Constant.NO_USER_FOUND);
-            apiResponse.setResponseCode(Constant.REQUEST_FAILURE);
+            apiResponse.setResponse(Constant.MSG_NO_USER_FOUND);
+            apiResponse.setResponseCode(Constant.USER_NOT_FOUND);
         }
         else if (userModel.getIsActive() == Constant.USER_INACTIVE) {
-            apiResponse.setResponse(Constant.NOT_ACTIVATED);
+            apiResponse.setResponse(Constant.MSG_USER_INACTIVE);
             apiResponse.setResponseCode(Constant.USER_INACTIVE);
         }
         else if (!userModel.getPassword().equals(password)) {
-            apiResponse.setResponse(Constant.WRONG_PASSWORD);
-            apiResponse.setResponseCode(Constant.REQUEST_FAILURE);
+            apiResponse.setResponse(Constant.MSG_WRONG_PASSWORD);
+            apiResponse.setResponseCode(Constant.WRONG_PASSWORD);
         }
         else {
             request.getSession().setAttribute("email", email);
-            apiResponse.setResponse(Constant.LOGIN_SUCCESSFUL);
-            apiResponse.setResponseCode(Constant.REQUEST_SUCCESSFUL);
+            apiResponse.setResponse(Constant.MSG_LOGIN_SUCCESSFUL);
+            apiResponse.setResponseCode(Constant.LOGIN_SUCCESSFUL);
         }
         return apiResponse;
     }
