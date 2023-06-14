@@ -1,5 +1,7 @@
 package com.zoraf.Tubewell_Information.Model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 
 @Entity
@@ -24,17 +26,19 @@ public class UserModel {
     private String password;
 
     @Column(name = "is_active")
-    private int isActive = 0;
+    @NotNull
+    private Integer isActive;
 
     public UserModel() {
     }
 
-    public UserModel( String userName, String organizationName, String mobileNumber, String email, String password) {
+    public UserModel( String userName, String organizationName, String mobileNumber, String email, String password, Integer isActive) {
         this.userName = userName;
         this.organizationName = organizationName;
         this.mobileNumber = mobileNumber;
         this.email = email;
         this.password = password;
+        this.isActive =isActive ;
     }
 
     public Long getUsereId() {
@@ -85,11 +89,11 @@ public class UserModel {
         this.password = password;
     }
 
-    public int getIsActive() {
+    public Integer getIsActive() {
         return isActive;
     }
 
-    public void setIsActive(int isActive) {
+    public void setIsActive(Integer isActive) {
         this.isActive = isActive;
     }
 }

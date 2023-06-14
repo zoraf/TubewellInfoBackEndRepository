@@ -1,39 +1,61 @@
 package com.zoraf.Tubewell_Information.POJO;
 
+import com.google.gson.annotations.SerializedName;
+import com.zoraf.Tubewell_Information.Model.PurposeOfUseModel;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TubewellInformation implements Serializable {
 
+    @SerializedName("owner_name")
     private String ownerName;
 
+    @SerializedName("owner_type")
     private String ownerType;
 
+    @SerializedName("date_of_installation")
     private String dateOfInstallation;
 
+    @SerializedName("is_approval_taken")
     private String isApprovalTaken;
 
+    @SerializedName("approval_authority")
     private String approvalAuthority;
 
+    @SerializedName("last_approval_date")
     private String lastApprovalDate;
 
+    @SerializedName("no_of_user")
     private String noOfUser;
 
-    private List<String> purposeOfUsage;
+    @SerializedName("purpose_of_usage")
+    private List<String> purposeOfUsage = new ArrayList<String>();
 
+    @SerializedName("amount_of_water_use")
     private String amountOfWaterUse;
 
+    @SerializedName("tubewell_type")
     private String tubewellType;
 
+    @SerializedName("mode_of_abstraction")
     private String modeOfAbstraction;
 
+    @SerializedName("length_of_pipe_used")
     private String lengthOfPipeUsed;
+
+    @SerializedName("latitude")
+    private String latitude;
+
+    @SerializedName("longitude")
+    private String longitude;
 
     public TubewellInformation() {
     }
 
-    public TubewellInformation(String ownerName, String ownerType, String dateOfInstallation, String isApprovalTaken, String approvalAuthority, String lastApprovalDate, String noOfUser, List<String> purposeOfUsage,
-                               String amountOfWaterUse, String tubewellType, String modeOfAbstraction, String lengthOfPipeUsed) {
+    public TubewellInformation(String ownerName, String ownerType, String dateOfInstallation, String isApprovalTaken, String approvalAuthority, String lastApprovalDate, String noOfUser, List<String> purposeOfUsage, String amountOfWaterUse,
+                               String tubewellType, String modeOfAbstraction, String lengthOfPipeUsed, String latitude, String longitude) {
         this.ownerName = ownerName;
         this.ownerType = ownerType;
         this.dateOfInstallation = dateOfInstallation;
@@ -46,6 +68,8 @@ public class TubewellInformation implements Serializable {
         this.tubewellType = tubewellType;
         this.modeOfAbstraction = modeOfAbstraction;
         this.lengthOfPipeUsed = lengthOfPipeUsed;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public String getOwnerName() {
@@ -142,5 +166,21 @@ public class TubewellInformation implements Serializable {
 
     public void setLengthOfPipeUsed(String lengthOfPipeUsed) {
         this.lengthOfPipeUsed = lengthOfPipeUsed;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 }

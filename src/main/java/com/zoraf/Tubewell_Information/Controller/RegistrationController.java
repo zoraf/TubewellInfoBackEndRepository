@@ -21,24 +21,34 @@ public class RegistrationController {
     @PostMapping
     public ApiResponse registration(@RequestBody UserInformation userInformation) {
 
-        UserModel userModel = userRepository.findAllByEmail(userInformation.getEmail());
-        ApiResponse apiResponse = new ApiResponse();
-        if (userModel == null) {
-            userModel = new UserModel();
-            userModel.setUserName(userInformation.getUserName());
-            userModel.setOrganizationName(userInformation.getOrganizationName());
-            userModel.setMobileNumber(userInformation.getMobileNumber());
-            userModel.setEmail(userInformation.getEmail());
-            userModel.setPassword(userInformation.getPassword());
-            userRepository.save(userModel);
-            apiResponse.setResponse(Constant.MSG_REGISTRATION_DONE_SUCCESSFULLY);
-            apiResponse.setResponseCode(Constant.REGISTRATION_DONE_SUCCESSFULLY);
-            return apiResponse;
-        }
-        else  {
-            apiResponse.setResponse(Constant.MSG_REGISTRATION_DONE_PREVIOUSLY);
-            apiResponse.setResponseCode(Constant.REGISTRATION_DONE_PREVIOUSLY);
+        UserModel userModel = new UserModel();
+        try {
+            userModel = userRepository.findAllByEmail(userInformation.getEmail());
+            ApiResponse apiResponse = new ApiResponse();
+            if (userModel == null) {
+                userModel = new UserModel();
+                userModel.setUserName(userInformation.getUserName());
+                userModel.setOrganizationName(userInformation.getOrganizationName());
+                userModel.setMobileNumber(userInformation.getMobileNumber());
+                userModel.setEmail(userInformation.getEmail());
+                userModel.setPassword(userInformation.getPassword());
+                userModel.setIsActive(new Integer(0));
+                userRepository.save(userModel);
+                apiResponse.setResponse(Constant.MSG_REGISTRATION_DONE_SUCCESSFULLY);
+                apiResponse.setResponseCode(Constant.REGISTRATION_DONE_SUCCESSFULLY);
+                return apiResponse;
+            } else {
+                apiResponse.setResponse(Constant.MSG_REGISTRATION_DONE_PREVIOUSLY);
+                apiResponse.setResponseCode(Constant.REGISTRATION_DONE_PREVIOUSLY);
+                return apiResponse;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            ApiResponse apiResponse = new ApiResponse();
+            apiResponse.setResponseCode(Constant.REGISTRATION_FAILED);
+            apiResponse.setResponse(Constant.MSG_REGISTRATION_FAILED);
             return apiResponse;
         }
     }
+
 }
