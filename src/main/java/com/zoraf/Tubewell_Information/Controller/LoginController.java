@@ -45,6 +45,7 @@ public class LoginController {
                 apiResponse.setResponse(Constant.MSG_LOGIN_SUCCESSFUL);
                 apiResponse.setResponseCode(Constant.LOGIN_SUCCESSFUL);
             }
+            System.out.println("login controller:: " + apiResponse.getResponse());
             return apiResponse;
         } catch (Exception e) {
             e.printStackTrace();
