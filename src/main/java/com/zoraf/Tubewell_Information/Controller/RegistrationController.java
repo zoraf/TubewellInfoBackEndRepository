@@ -21,7 +21,7 @@ public class RegistrationController {
     @PostMapping
     public ApiResponse registration(@RequestBody UserInformation userInformation) {
 
-        UserModel userModel = new UserModel();
+        UserModel userModel;
         try {
             userModel = userRepository.findAllByEmail(userInformation.getEmail());
             ApiResponse apiResponse = new ApiResponse();
@@ -32,14 +32,16 @@ public class RegistrationController {
                 userModel.setMobileNumber(userInformation.getMobileNumber());
                 userModel.setEmail(userInformation.getEmail());
                 userModel.setPassword(userInformation.getPassword());
-                userModel.setIsActive(new Integer(0));
+                userModel.setIsActive(0);
                 userRepository.save(userModel);
                 apiResponse.setResponse(Constant.MSG_REGISTRATION_DONE_SUCCESSFULLY);
                 apiResponse.setResponseCode(Constant.REGISTRATION_DONE_SUCCESSFULLY);
+                System.out.println("user registration is successful");
                 return apiResponse;
             } else {
                 apiResponse.setResponse(Constant.MSG_REGISTRATION_DONE_PREVIOUSLY);
                 apiResponse.setResponseCode(Constant.REGISTRATION_DONE_PREVIOUSLY);
+                System.out.println("user registration failed");
                 return apiResponse;
             }
         } catch (Exception e) {
