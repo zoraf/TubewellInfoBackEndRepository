@@ -61,9 +61,14 @@ public class TubewellInformationController {
             tubewellInformationModel.setTubewellType(tubewellInformation.getTubewellType());
             tubewellInformationModel.setModeOfAbstraction(tubewellInformation.getModeOfAbstraction());
             tubewellInformationModel.setLengthOfPipeUsed(tubewellInformation.getLengthOfPipeUsed());
+            tubewellInformationModel.setDiameterOfPipeUsed(tubewellInformation.getDiameterOfPipeUsed());
+            tubewellInformationModel.setHpOfEngineUsed(tubewellInformationModel.getHpOfEngineUsed());
             tubewellInformationModel.setLatitude(tubewellInformation.getLatitude());
             tubewellInformationModel.setLongitude(tubewellInformation.getLongitude());
+
+            System.out.println((String) request.getSession().getAttribute("email"));
             tubewellInformationModel.setUserEmail((String) request.getSession().getAttribute("email"));
+
 
             for (int i = 0; i < tubewellInformation.getPurposeOfUsage().size(); i++) {
                 PurposeOfUseModel purposeOfUseModel = new PurposeOfUseModel();

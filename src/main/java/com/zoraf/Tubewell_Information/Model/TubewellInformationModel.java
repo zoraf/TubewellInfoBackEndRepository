@@ -47,6 +47,12 @@ public class TubewellInformationModel {
     @Column(name = "length_of_pipe_used")
     private String lengthOfPipeUsed;
 
+    @Column(name = "diameter_of_pipe_used")
+    private String diameterOfPipeUsed;
+
+    @Column(name = "hp_of_engine_used")
+    private String hpOfEngineUsed;
+
     @Column(name = "latitude")
     private String latitude;
 
@@ -60,7 +66,7 @@ public class TubewellInformationModel {
     }
 
     public TubewellInformationModel(String ownerName, String ownerType, String dateOfInstallation, String isApprovalTaken, String approvalAuthority, String lastApprovalDate, String noOfUser, List<PurposeOfUseModel> purposeOfUsage, String amountOfWaterUse, String tubewellType,
-                                    String modeOfAbstraction, String lengthOfPipeUsed, String latitude, String longitude) {
+                                    String modeOfAbstraction, String lengthOfPipeUsed, String diameterOfPipeUsed, String hpOfEngineUsed, String latitude, String longitude) {
         this.ownerName = ownerName;
         this.ownerType = ownerType;
         this.dateOfInstallation = dateOfInstallation;
@@ -73,6 +79,8 @@ public class TubewellInformationModel {
         this.tubewellType = tubewellType;
         this.modeOfAbstraction = modeOfAbstraction;
         this.lengthOfPipeUsed = lengthOfPipeUsed;
+        this.diameterOfPipeUsed = diameterOfPipeUsed;
+        this.hpOfEngineUsed = hpOfEngineUsed;
         this.latitude = latitude;
         this.longitude = longitude;
     }
@@ -179,6 +187,22 @@ public class TubewellInformationModel {
 
     public void setLengthOfPipeUsed(String lengthOfPipeUsed) {
         this.lengthOfPipeUsed = lengthOfPipeUsed;
+    }
+
+    public String getDiameterOfPipeUsed() {
+        return diameterOfPipeUsed;
+    }
+
+    public void setDiameterOfPipeUsed(String diameterOfPipeUsed) {
+        this.diameterOfPipeUsed = diameterOfPipeUsed;
+    }
+
+    public String getHpOfEngineUsed() {
+        return hpOfEngineUsed;
+    }
+
+    public void setHpOfEngineUsed(String hpOfEngineUsed) {
+        this.hpOfEngineUsed = hpOfEngineUsed;
     }
 
     public String getLatitude() {

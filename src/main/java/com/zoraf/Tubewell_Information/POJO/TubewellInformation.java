@@ -44,6 +44,12 @@ public class TubewellInformation implements Serializable {
     @SerializedName("lengthOfPipeUsed")
     private String lengthOfPipeUsed;
 
+    @SerializedName("diameterOfPipeUsed")
+    private String diameterOfPipeUsed;
+
+    @SerializedName("HPofEngine")
+    private String HPofEngine;
+
     @SerializedName("latitude")
     private String latitude;
 
@@ -54,7 +60,7 @@ public class TubewellInformation implements Serializable {
     }
 
     public TubewellInformation(String ownerName, String ownerType, String dateOfInstallation, String isApprovalTaken, String approvalAuthority, String lastApprovalDate, String noOfUser, List<String> purposeOfUsage, String amountOfWaterUse,
-                               String tubewellType, String modeOfAbstraction, String lengthOfPipeUsed, String latitude, String longitude) {
+                               String tubewellType, String modeOfAbstraction, String lengthOfPipeUsed, String diameterOfPipeUsed, String HPofEngine, String latitude, String longitude) {
         this.ownerName = ownerName;
         this.ownerType = ownerType;
         this.dateOfInstallation = dateOfInstallation;
@@ -67,6 +73,8 @@ public class TubewellInformation implements Serializable {
         this.tubewellType = tubewellType;
         this.modeOfAbstraction = modeOfAbstraction;
         this.lengthOfPipeUsed = lengthOfPipeUsed;
+        this.diameterOfPipeUsed = diameterOfPipeUsed;
+        this.HPofEngine = HPofEngine;
         this.latitude = latitude;
         this.longitude = longitude;
     }
@@ -165,6 +173,22 @@ public class TubewellInformation implements Serializable {
 
     public void setLengthOfPipeUsed(String lengthOfPipeUsed) {
         this.lengthOfPipeUsed = lengthOfPipeUsed;
+    }
+
+    public String getDiameterOfPipeUsed() {
+        return diameterOfPipeUsed;
+    }
+
+    public void setDiameterOfPipeUsed(String diameterOfPipeUsed) {
+        this.diameterOfPipeUsed = diameterOfPipeUsed;
+    }
+
+    public String getHPofEngine() {
+        return HPofEngine;
+    }
+
+    public void setHPofEngine(String HPofEngine) {
+        this.HPofEngine = HPofEngine;
     }
 
     public String getLatitude() {
